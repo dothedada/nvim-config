@@ -21,6 +21,9 @@ packer.startup(function(use)
     -- Barra inferior de estado
     use 'hoob3rt/lualine.nvim'
 
+    -- Interfase de usuario y LSP en esteroides
+    use 'nvimdev/lspsaga.nvim'
+
     -- LSPs
     use {
         'VonHeikemen/lsp-zero.nvim',

@@ -15,3 +15,9 @@ keymap.set('n', '<leader>v', ':vsplit<Return><C-w>w', { silent = true }) -- Nuev
 
 -- Abrir o cerrar el explorador de archivos
 keymap.set('n', '<leader>e', vim.cmd.NvimTreeToggle)
+
+-- LSPsaga
+keymap.set('n', '<C-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
+keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>')
+keymap.set('n', 'gd', '<cmd>Lspsaga finder ++normal<cr>')
+keymap.set('n', 'gr', '<cmd>Lspsaga rename<cr>')
