@@ -71,4 +71,7 @@ packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim' --signs, los cositos que van a la izq del indentado
     use 'dinhhuy258/git.nvim' --Servidor de Git
 
+    -- Marcar comentarios
+    use 'numToStr/Comment.nvim'
+
 end)
