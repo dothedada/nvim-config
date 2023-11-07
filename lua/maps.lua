@@ -5,6 +5,10 @@ local keymap = vim.keymap
 --No yankear el caracter cuando uso x
 keymap.set('n', 'x', '"_x')
 
+-- Wrapera el texto
+
+keymap.set('n', '<leader>tw', ':set wrap!<cr>')
+
 -- Incrementar o disminuir en 1 algún número cuando estoy en modo normal
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
