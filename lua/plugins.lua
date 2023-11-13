@@ -12,6 +12,7 @@ packer.startup(function(use)
 
     -- inicia el estilo
     use { "catppuccin/nvim", as = "catppuccin" }
+
     -- Inicia los íconos
     use 'kyazdani42/nvim-web-devicons'
 
@@ -73,5 +74,8 @@ packer.startup(function(use)
 
     -- Marcar comentarios
     use 'numToStr/Comment.nvim'
+
+    -- Harpoon
+    use 'ThePrimeagen/harpoon'
 
 end)
