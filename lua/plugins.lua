@@ -79,6 +79,6 @@ packer.startup(function(use)
     use 'ThePrimeagen/harpoon'
 
     -- Mover líneas de código dentro del código sin yankearlas
-    use 'fedepujol/move.nvim'
+    -- use 'fedepujol/move.nvim'
 
 end)
