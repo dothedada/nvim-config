@@ -50,7 +50,7 @@ packer.startup(function(use)
     -- Cierre de paréntesis y comillas automático
     use 'windwp/nvim-autopairs'
 
-    -- treesitter
+    -- treesitter -> asignación de colores según el "significado" de las palabras
     use {
         'nvim-treesitter/nvim-treesitter',
         run = function()
@@ -65,17 +65,20 @@ packer.startup(function(use)
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-file-browser.nvim'
 
-    -- Referencias de color - Colorizer
+    -- Referencias de color en CSS, JS y HTML - Colorizer
     use 'norcalli/nvim-colorizer.lua'
 
-    -- Git
+    -- Git -> usar git dentro de neovim
     use 'lewis6991/gitsigns.nvim' --signs, los cositos que van a la izq del indentado
     use 'dinhhuy258/git.nvim' --Servidor de Git
 
-    -- Marcar comentarios
+    -- Marcar comentarios rápidamente
     use 'numToStr/Comment.nvim'
 
-    -- Harpoon
+    -- Harpoon -> Moverse rápidamente entre los archivos marcados
     use 'ThePrimeagen/harpoon'
+
+    -- Mover líneas de código dentro del código sin yankearlas
+    use 'fedepujol/move.nvim'
 
 end)

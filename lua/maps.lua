@@ -20,7 +20,7 @@ keymap.set('n', '<leader>v', ':vsplit<Return><C-w>w', { silent = true }) -- Nuev
 keymap.set('n', '<leader>e', vim.cmd.NvimTreeToggle)
 
 -- LSPsaga
-keymap.set('n', '<C-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
+keymap.set('n', '<C-f>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<cr>')
 keymap.set('n', 'gd', '<cmd>Lspsaga finder ++normal<cr>')
 keymap.set('n', 'gr', '<cmd>Lspsaga rename<cr>')
@@ -33,3 +33,12 @@ keymap.set("n", '<leader>h', ui.toggle_quick_menu)
 keymap.set('n', '<leader>ht', ':Telescope harpoon marks<CR>')
 keymap.set('n', '<C-n>', ui.nav_next)
 keymap.set('n', '<C-p>', ui.nav_prev)
+
+-- Move -> mover bloques de texto
+local opts = { noremap = true, silent = true }
+-- Normal-mode 
+keymap.set('n', '<C-j>', ':MoveLine(1)<CR>', opts)
+keymap.set('n', '<C-k>', ':MoveLine(-1)<CR>', opts)
+-- Visual-mode
+keymap.set('v', '<C-j>', ':MoveBlock(1)<CR>', opts)
+keymap.set('v', '<C-k>', ':MoveBlock(-1)<CR>', opts)
