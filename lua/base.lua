@@ -8,6 +8,9 @@ vim.opt.fileencoding ='utf-8'
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- cursor en insert mode
+vim.opt.guicursor = "i-ci:ver100-Cursor-blinkwait300-blinkon200-blinkoff150"
+
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.hlsearch = true
@@ -19,8 +22,8 @@ vim.opt.cmdheight = 1
 vim.opt.laststatus = 2
 vim.opt.expandtab = true
 --
-vim.opt.scrolloff = 10
-vim.opt.colorcolumn = "80"
+vim.opt.scrolloff = 5
+vim.opt.colorcolumn = "90"
 --
 -- vim.opt.shell = 'fish'
 

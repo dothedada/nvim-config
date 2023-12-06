@@ -78,7 +78,5 @@ packer.startup(function(use)
     -- Harpoon -> Moverse rápidamente entre los archivos marcados
     use 'ThePrimeagen/harpoon'
 
-    -- Mover líneas de código dentro del código sin yankearlas
-    -- use 'fedepujol/move.nvim'
 
 end)
