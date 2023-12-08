@@ -38,3 +38,7 @@ keymap.set('n', '<C-p>', ui.nav_prev)
 keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
+-- Testeo JS
+keymap.set('n', '<F4>', '<cmd>Lab code stop<cr>')
+keymap.set('n', '<F5>', '<cmd>Lab code run<cr>')
+keymap.set('n', '<F6>', '<cmd>Lab code panel<cr>')

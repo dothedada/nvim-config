@@ -78,5 +78,13 @@ packer.startup(function(use)
     -- Harpoon -> Moverse rápidamente entre los archivos marcados
     use 'ThePrimeagen/harpoon'
 
+    -- Sandbox para código rápido
+    -- use { 'michaelb/sniprun', run = 'sh ./install.sh'}
+    use {
+        '0x100101/lab.nvim',
+        run = 'cd js && npm ci',
+        requires = { 'nvim-lua/plenary.nvim' }
+    }
+
 
 end)
