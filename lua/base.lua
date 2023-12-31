@@ -23,7 +23,7 @@ vim.opt.laststatus = 2
 vim.opt.expandtab = true
 --
 vim.opt.scrolloff = 5
-vim.opt.colorcolumn = "90"
+vim.opt.colorcolumn = "80"
 --
 -- vim.opt.shell = 'fish'
 
