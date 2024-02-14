@@ -70,7 +70,7 @@ packer.startup(function(use)
 
     -- Git -> usar git dentro de neovim
     use 'lewis6991/gitsigns.nvim' --signs, los cositos que van a la izq del indentado
-    use 'dinhhuy258/git.nvim' --Servidor de Git
+    -- use 'dinhhuy258/git.nvim' --Servidor de Git
 
     -- Marcar comentarios rápidamente
     use 'numToStr/Comment.nvim'
