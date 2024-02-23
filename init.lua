@@ -1,6 +1,6 @@
-require 'config.keymaps'
-require 'config.settings'
-require 'config.commands'
-require 'config.lazy'
+require("config.keymaps")
+require("config.settings")
+require("config.commands")
+require("config.lazy")
 
-pcall(vim.cmd.colorscheme, 'catppuccin')
+pcall(vim.cmd.colorscheme, "catppuccin")

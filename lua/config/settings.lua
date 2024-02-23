@@ -16,13 +16,13 @@ opt.number = true
 opt.relativenumber = true
 opt.signcolumn = 'yes'
 opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  -- fold = "⸱",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
+	foldopen = '',
+	foldclose = '',
+	-- fold = "⸱",
+	fold = ' ',
+	foldsep = ' ',
+	diff = '╱',
+	eob = ' ',
 }
 
 -- Decrease update time
@@ -40,12 +40,12 @@ opt.undofile = true
 opt.undolevels = 10000
 
 -- interfase
-opt.guicursor = "i-ci:ver100-Cursor-blinkwait300-blinkon200-blinkoff150" -- cursor en insert mode
+opt.guicursor = 'i-ci:ver100-Cursor-blinkwait300-blinkon200-blinkoff150' -- cursor en insert mode
 opt.scrolloff = 4 -- Lineas visibles arriba y abajo apartir del cursor cuando se hace scroll
-opt.backspace = "start,eol,indent" -- Comportamiento del backspace cuando llega a borde
+opt.backspace = 'start,eol,indent' -- Comportamiento del backspace cuando llega a borde
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
-opt.colorcolumn = "80"
+opt.colorcolumn = '80'
 
 -- indentado
 opt.expandtab = false -- true -> Espacios en lugar de tabs
@@ -58,6 +58,5 @@ opt.ai = true -- auto indentado
 
 -- Text wrap
 opt.linebreak = true
-opt.showbreak = "    " -- Make it so that long lines wrap smartly
+opt.showbreak = '    ' -- Make it so that long lines wrap smartly
 opt.wrap = false -- Disable line wrap
-

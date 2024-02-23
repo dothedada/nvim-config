@@ -30,18 +30,18 @@ map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 map('n', '<leader>z', '<cmd>UndotreeToggle<cr>')
 
 -- Harpoon
-map('n', "<C-x>", function()
-  require("harpoon"):list():append()
+map('n', '<C-x>', function()
+	require('harpoon'):list():append()
 end)
-map('n', "<leader>h", function()
-  local harpoon = require("harpoon")
-  harpoon.ui:toggle_quick_menu(harpoon:list())
+map('n', '<leader>h', function()
+	local harpoon = require 'harpoon'
+	harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
-map('n', "<C-p>", function()
-  require("harpoon"):list():prev()
+map('n', '<C-p>', function()
+	require('harpoon'):list():prev()
 end)
-map('n', "<C-n>", function()
-  require("harpoon"):list():next()
+map('n', '<C-n>', function()
+	require('harpoon'):list():next()
 end)
 
 -- Telescope
@@ -49,31 +49,52 @@ map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
 map('n', '<leader>d', function()
-  require('telescope').extensions.file_browser.file_browser({
-    path = '%:p:h',
-    respect_gitignore = false,
-    hidden = true,
-    grouped = true,
-    previewer = false,
-    initial_mode = 'normal',
-    sorting_strategy = "ascending",
-    layout_strategy = "horizontal",
-    layout_config = {
-      prompt_position = "top",
-      width = 80,
-      height = 30
-    },
-    border = true
-  })
+	require('telescope').extensions.file_browser.file_browser {
+		path = '%:p:h',
+		respect_gitignore = false,
+		hidden = true,
+		grouped = true,
+		previewer = false,
+		initial_mode = 'normal',
+		sorting_strategy = 'ascending',
+		layout_strategy = 'horizontal',
+		layout_config = {
+			prompt_position = 'top',
+			width = 80,
+			height = 30,
+		},
+		border = true,
+	}
 end)
 
 -- Trouble
-map("n", "<leader>xx", function() require("trouble").toggle() end)
-map("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
-map("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-map("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-map("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
-map("n", "gR", function() require("trouble").toggle("lsp_references") end)
+map('n', '<leader>xx', function()
+	require('trouble').toggle()
+end)
+map('n', '<leader>xw', function()
+	require('trouble').toggle 'workspace_diagnostics'
+end)
+map('n', '<leader>xd', function()
+	require('trouble').toggle 'document_diagnostics'
+end)
+map('n', '<leader>xq', function()
+	require('trouble').toggle 'quickfix'
+end)
+map('n', '<leader>xl', function()
+	require('trouble').toggle 'loclist'
+end)
+map('n', 'gR', function()
+	require('trouble').toggle 'lsp_references'
+end)
 
 -- rename
-map("n", "<leader>rn", ":IncRename ")
+map('n', '<leader>rn', ':IncRename ')
+
+-- Prettier
+map({ 'n', 'v' }, '<F3>', function()
+	require('conform').format {
+		lsp_fallback = true,
+		async = false,
+		timeout_ms = 500,
+	}
+end)

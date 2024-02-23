@@ -1,5 +1,6 @@
 return {
 	'lewis6991/gitsigns.nvim',
+
 	opts = {
 		signs = {
 			add = { text = '+' },
@@ -7,8 +8,6 @@ return {
 			delete = { text = '_' },
 			topdelete = { text = '‾' },
 			changedelete = { text = '~' },
-		}
-	}
+		},
+	},
 }
-
-
