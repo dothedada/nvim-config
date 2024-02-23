@@ -77,6 +77,7 @@ function Plugin.config()
 					capabilities = lsp_capabilities,
 				}
 			end,
+			-- Con esta funcion se activa eslint en los archivos que son revisados con eslint
 			['tsserver'] = function()
 				lspconfig.tsserver.setup {
 					capabilities = lsp_capabilities,

@@ -22,7 +22,7 @@ opt.fillchars = {
 	fold = ' ',
 	foldsep = ' ',
 	diff = '╱',
-	eob = ' ',
+	eob = ' '
 }
 
 -- Decrease update time
