@@ -12,8 +12,8 @@ map('n', 'x', '"_x')
 -- Operaciones con WrapText
 map('n', '<leader>tw', ':set wrap! <CR>')
 -- Salta entre la línea cuando el texto está wrapeado y no a la siguiente línea
-map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ 'n', 'v' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ 'n', 'v' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Incrementar o disminuir en 1 algún número cuando estoy en modo normal
 map('n', '+', '<C-a>')
