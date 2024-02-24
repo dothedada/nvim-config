@@ -98,3 +98,13 @@ map({ 'n', 'v' }, '<F3>', function()
 		timeout_ms = 500,
 	}
 end)
+
+-- HACK: '¶' es lo que bota el teclado al hacer <A-j>
+vim.keymap.set('n', '¶', function()
+	require('todo-comments').jump_next()
+end)
+
+-- HACK: '§' es lo que bota el teclado al hacer <A-k>
+vim.keymap.set('n', '§', function()
+	require('todo-comments').jump_prev()
+end)
