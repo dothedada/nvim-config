@@ -41,7 +41,7 @@ opt.undolevels = 10000
 
 -- interfase
 opt.guicursor = 'i-ci:ver100-Cursor-blinkwait300-blinkon200-blinkoff150' -- cursor en insert mode
-opt.scrolloff = 4 -- Lineas visibles arriba y abajo apartir del cursor cuando se hace scroll
+opt.scrolloff = 4 -- Lineas visibles arriba y abaj apartir del cursor cuando se hace scroll
 opt.backspace = 'start,eol,indent' -- Comportamiento del backspace cuando llega a borde
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
