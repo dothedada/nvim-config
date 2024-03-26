@@ -17,13 +17,13 @@ return {
 					ft_icon and {
 						' ',
 						ft_icon,
-						guibg = '#141617',
+						-- guibg = '#1d2021',
 						guifg = '#ecdbb2',
 					} or '',
 					' ',
 					{ filename, gui = modified and 'bold,italic' or 'bold' },
 					' ',
-					guibg = '#141617',
+					guibg = '#1d2021',
 				}
 				return buffer
 			end

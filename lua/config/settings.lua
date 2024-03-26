@@ -60,3 +60,7 @@ opt.ai = true -- auto indentado
 opt.linebreak = true
 opt.showbreak = '    ' -- Make it so that long lines wrap smartly
 opt.wrap = false -- Disable line wrap
+
+-- fondo transparente linux
+opt.pumblend = 0
+opt.winblend = 0
