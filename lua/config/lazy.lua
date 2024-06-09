@@ -18,7 +18,7 @@ function lazy.setup(plugins)
 		return
 	end
 
-	-- lazy.install(lazy.path) -- descomentar sólo cuando lazy no esté instalado
+	lazy.install(lazy.path) -- descomentar sólo cuando lazy no esté instalado
 
 	vim.opt.rtp:prepend(lazy.path)
 

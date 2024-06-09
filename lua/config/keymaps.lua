@@ -9,6 +9,9 @@ map('n', '<leader>e', ':Explore <CR>')
 -- Evitar yank cuando se usa X
 map('n', 'x', '"_x')
 
+-- Borrar palabras buscadas
+map('n', '<leader>rs', ':noh <CR>')
+
 -- Operaciones con WrapText
 map('n', '<leader>tw', ':set wrap! <CR>')
 -- Salta entre la línea cuando el texto está wrapeado y no a la siguiente línea
@@ -47,7 +50,7 @@ end)
 -- Telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-map('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+map('n', '<leader>fb', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
 map('n', '<leader>d', function()
 	require('telescope').extensions.file_browser.file_browser {
 		path = '%:p:h',
@@ -99,12 +102,12 @@ map({ 'n', 'v' }, '<F3>', function()
 	}
 end)
 
--- HACK: '¶' es lo que bota el teclado al hacer <A-j>
+-- HACK: '¶' es lo que bota el teclado al hacer <A-j>, teclado mac español
 vim.keymap.set('n', '¶', function()
 	require('todo-comments').jump_next()
 end)
 
--- HACK: '§' es lo que bota el teclado al hacer <A-k>
+-- HACK: '§' es lo que bota el teclado al hacer <A-k>, teclado mac español
 vim.keymap.set('n', '§', function()
 	require('todo-comments').jump_prev()
 end)

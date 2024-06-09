@@ -64,3 +64,4 @@ opt.wrap = false -- Disable line wrap
 -- fondo transparente linux
 opt.pumblend = 0
 opt.winblend = 0
+opt.clipboard = "unnamedplus"
