@@ -9,10 +9,10 @@ return {
 		local lint = require('lint')
 
 		lint.linters_by_ft = {
-			javascript = { 'eslint' },
-			typescript = { 'eslint' },
-			javascriptreact = { 'eslint' },
-			typescriptreact = { 'eslint' },
+			javascript = { 'biome' },
+			typescript = { 'biome' },
+			javascriptreact = { 'biome' },
+			typescriptreact = { 'biome' },
 			svelte = { 'eslint' },
 			vue = { 'eslint' },
 		}
