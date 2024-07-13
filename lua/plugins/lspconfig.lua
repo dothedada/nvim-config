@@ -69,6 +69,7 @@ function Plugin.config()
 			'emmet_language_server',
 			'lua_ls',
 			'jsonls',
+			'bash-language-server',
 		},
 
 		handlers = {
@@ -78,6 +79,9 @@ function Plugin.config()
 				}
 			end,
 			-- Con esta funcion se activa eslint en los archivos que son revisados con eslint
+			['bash-language-server'] = function()
+				require 'plugins.lsp.bash-language-server'
+			end,
 			['tsserver'] = function()
 				lspconfig.tsserver.setup {
 					capabilities = lsp_capabilities,

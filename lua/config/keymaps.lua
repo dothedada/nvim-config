@@ -34,7 +34,7 @@ map('n', '<leader>z', '<cmd>UndotreeToggle<cr>')
 
 -- Harpoon
 map('n', '<C-x>', function()
-	require('harpoon'):list():append()
+	require('harpoon'):list():add()
 end)
 map('n', '<leader>h', function()
 	local harpoon = require 'harpoon'

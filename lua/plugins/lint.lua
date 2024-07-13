@@ -9,6 +9,8 @@ return {
 		local lint = require('lint')
 
 		lint.linters_by_ft = {
+			bash = { 'bash-language-server' },
+			zsh = { 'bash-language-server' },
 			javascript = { 'biome' },
 			typescript = { 'biome' },
 			javascriptreact = { 'biome' },
