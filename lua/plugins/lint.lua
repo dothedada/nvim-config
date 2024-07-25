@@ -13,8 +13,8 @@ return {
 			zsh = { 'bash-language-server' },
 			javascript = { 'biome' },
 			typescript = { 'biome' },
-			javascriptreact = { 'biome' },
-			typescriptreact = { 'biome' },
+			javascriptreact = { 'eslint' },
+			typescriptreact = { 'eslint' },
 			svelte = { 'eslint' },
 			vue = { 'eslint' },
 		}

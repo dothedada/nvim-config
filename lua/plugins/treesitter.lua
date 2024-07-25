@@ -69,8 +69,6 @@ return {
 		auto_install = true,
 		sync_install = false,
 		modules = {},
-		highlight = { enable = true },
-		indent = { enable = true },
 		incremental_selection = { enable = true },
 		textobjects = { move = { enable = true } },
 	},

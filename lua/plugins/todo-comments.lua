@@ -17,6 +17,20 @@ return {
 			NOTE = { icon = ' ', color = 'hint', alt = { 'INFO' } },
 			TEST = { icon = '⏲ ', color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
 		},
+		-- list of named colors where we try to extract the guifg from the
+		-- list of highlight groups or use the hex color if hl not found as a fallback
+		colors = {
+			error = { '#DC2626' }, -- 'DiagnosticError', 'ErrorMsg', 
+			-- error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
+			warning = { 'DiagnosticError', 'WarningMsg', '#FBBF24' },
+			-- warning = { '#7C3AED', 'DiagnosticWarn', 'WarningMsg', '#FBBF24' },
+			info = { '#2563EB' }, -- 'DiagnosticInfo',
+			hint = { '#10B981' }, -- 'DiagnosticHint', 
+			-- hint = { 'DiagnosticHint', '#10B981' },
+			default = { 'Identifier', '#7C3AED' },
+			test = { '#FF00FF' }, -- 'Identifier', 
+			-- test = { 'Identifier', '#FF00FF' },
+		},
 
 		merge_keywords = true, -- when true, custom keywords will be merged with the defaults
 		-- highlighting of the line containing the todo comment
@@ -34,16 +48,6 @@ return {
 			comments_only = true, -- uses treesitter to match keywords in comments only
 			max_line_len = 400, -- ignore lines longer than this
 			exclude = {}, -- list of file types to exclude highlighting
-		},
-		-- list of named colors where we try to extract the guifg from the
-		-- list of highlight groups or use the hex color if hl not found as a fallback
-		colors = {
-			error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
-			warning = { 'DiagnosticWarn', 'WarningMsg', '#FBBF24' },
-			info = { 'DiagnosticInfo', '#2563EB' },
-			hint = { 'DiagnosticHint', '#10B981' },
-			default = { 'Identifier', '#7C3AED' },
-			test = { 'Identifier', '#FF00FF' },
 		},
 	},
 }
