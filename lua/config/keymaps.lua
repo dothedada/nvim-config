@@ -9,7 +9,7 @@ map('n', '<leader>e', ':Explore <CR>')
 -- Evitar yank cuando se usa X
 map('n', 'x', '"_x')
 
--- Borrar palabras buscadas
+-- Borrar marcación  de cadenas buscadas
 map('n', '<leader>rs', ':noh <CR>')
 
 -- Operaciones con WrapText
@@ -33,7 +33,7 @@ map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 map('n', '<leader>z', '<cmd>UndotreeToggle<cr>')
 
 -- Harpoon
-map('n', '<C-x>', function()
+map('n', '<leader>H', function()
 	require('harpoon'):list():add()
 end)
 map('n', '<leader>h', function()
@@ -48,30 +48,50 @@ map('n', '<C-n>', function()
 end)
 
 -- Telescope
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-map('n', '<leader>fb', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
-map('n', '<leader>d', function()
-	require('telescope').extensions.file_browser.file_browser {
-		path = '%:p:h',
-		respect_gitignore = false,
-		hidden = true,
-		grouped = true,
-		previewer = false,
-		initial_mode = 'normal',
-		sorting_strategy = 'ascending',
-		layout_strategy = 'horizontal',
-		layout_config = {
-			prompt_position = 'top',
-			width = 80,
-			height = 30,
-		},
-		border = true,
-	}
-end)
+map('n', '<leader>ff', function()
+	local builtin = require('telescope.builtin')
+	builtin.find_files()
+end, {})
+map('n', '<leader>fg', function()
+	local builtin = require('telescope.builtin')
+	builtin.live_grep()
+end, {})
+map('n', '<leader>fb', function()
+	local builtin = require('telescope.builtin')
+	builtin.buffers()
+end, {})
+map('n', '<leader>fh', function()
+	local builtin = require('telescope.builtin')
+	builtin.help_tags()
+end, {})
+-- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+-- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+-- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+-- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+-- map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+-- map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+-- map('n', '<leader>fb', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+-- map('n', '<leader>d', function()
+-- 	require('telescope').extensions.file_browser.file_browser {
+-- 		path = '%:p:h',
+-- 		respect_gitignore = false,
+-- 		hidden = true,
+-- 		grouped = true,
+-- 		previewer = false,
+-- 		initial_mode = 'normal',
+-- 		sorting_strategy = 'ascending',
+-- 		layout_strategy = 'horizontal',
+-- 		layout_config = {
+-- 			prompt_position = 'top',
+-- 			width = 80,
+-- 			height = 30,
+-- 		},
+-- 		border = true,
+-- 	}
+-- end)
 
 -- Trouble
-map('n', '<leader>xx', function()
+map('n', '<C-x>', function()
 	require('trouble').toggle('diagnostics')
 end)
 

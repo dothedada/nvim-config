@@ -5,7 +5,7 @@ return {
 	dependencies = {
 		{ 'nvim-lua/plenary.nvim' },
 		{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-		{ 'nvim-telescope/telescope-file-browser.nvim' },
+		-- { 'nvim-telescope/telescope-file-browser.nvim' },
 	},
 
 	cmd = { 'Telescope' },
@@ -15,6 +15,7 @@ return {
 			file_ignore_patterns = {
 				'.git/',
 				'.cache',
+				'node_modules/',
 				'%.o',
 				'%.a',
 				'%.out',
@@ -23,7 +24,6 @@ return {
 				'%.mkv',
 				'%.mp4',
 				'%.zip',
-				'node_modules/',
 			},
 		},
 	},
