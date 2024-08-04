@@ -64,31 +64,6 @@ map('n', '<leader>fh', function()
 	local builtin = require('telescope.builtin')
 	builtin.help_tags()
 end, {})
--- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
--- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
--- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
--- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
--- map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
--- map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
--- map('n', '<leader>fb', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
--- map('n', '<leader>d', function()
--- 	require('telescope').extensions.file_browser.file_browser {
--- 		path = '%:p:h',
--- 		respect_gitignore = false,
--- 		hidden = true,
--- 		grouped = true,
--- 		previewer = false,
--- 		initial_mode = 'normal',
--- 		sorting_strategy = 'ascending',
--- 		layout_strategy = 'horizontal',
--- 		layout_config = {
--- 			prompt_position = 'top',
--- 			width = 80,
--- 			height = 30,
--- 		},
--- 		border = true,
--- 	}
--- end)
 
 -- Trouble
 map('n', '<C-x>', function()
