@@ -2,12 +2,14 @@ return {
 	'ThePrimeagen/harpoon',
 
 	branch = 'harpoon2',
-	lazy = false,
-	requires = { 'nvim-lua/plenary.nvim' },
-	conf = function()
-		require('harpoon').setup {
-			-- save_on_ui_close = true,
-			-- save_on_toggle = true
-		}
-	end,
+
+	opts = {
+		menu = {
+			width = vim.api.nvim_win_get_width(0) - 4,
+		},
+		settings = {
+			save_on_toggle = true,
+		},
+	},
+	-- requires = { 'nvim-lua/plenary.nvim' },
 }
