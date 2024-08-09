@@ -71,7 +71,13 @@ map('n', '<C-x>', function()
 end)
 
 -- rename
-map('n', '<leader>rn', ':IncRename ')
+map('n', '<leader>rn', function()
+	vim.lsp.buf.document_highlight()
+	vim.defer_fn(function()
+		vim.lsp.buf.rename()
+	end, 100)
+	vim.lsp.buf.clear_references()
+end)
 
 -- Prettier
 map({ 'n', 'v' }, '<F3>', function()
