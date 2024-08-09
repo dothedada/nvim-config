@@ -7,7 +7,7 @@ return {
 		require('lazy.core.loader').add_to_rtp(plugin)
 		require 'nvim-treesitter.query_predicates'
 	end,
-	
+
 	dependencies = {
 		{
 			'nvim-treesitter/nvim-treesitter-textobjects',
@@ -20,8 +20,7 @@ return {
 					if name:find 'goto' == 1 then
 						move[name] = function(q, ...)
 							if vim.wo.diff then
-								local config =
-									configs.get_module('textobjects.move')[name] ---@type table<string,string>
+								local config = configs.get_module('textobjects.move')[name] ---@type table<string,string>
 								for key, query in pairs(config or {}) do
 									if q == query and key:find '[%]%[][cC]' then
 										vim.cmd('normal! ' .. key)
@@ -38,7 +37,7 @@ return {
 	},
 
 	cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall' },
-	
+
 	opts = {
 		highlight = { enable = true },
 		indent = { enable = true },
