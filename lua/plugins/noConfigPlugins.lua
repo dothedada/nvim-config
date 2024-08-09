@@ -11,11 +11,4 @@ return {
 	{ 'windwp/nvim-ts-autotag', opts = {} },
 	{ 'mbbill/undotree' },
 	{ 'folke/neodev.nvim', opts = {} },
-	{
-		'smjonas/inc-rename.nvim',
-
-		config = function()
-			require('inc_rename').setup()
-		end,
-	},
 }
