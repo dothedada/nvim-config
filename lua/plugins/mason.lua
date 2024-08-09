@@ -21,7 +21,6 @@ return {
 		config = function()
 			local mason_lspconfig = require('mason-lspconfig')
 			mason_lspconfig.setup({
-				-- list of servers for mason to install
 				ensure_installed = {
 					'tsserver',
 					'html',
