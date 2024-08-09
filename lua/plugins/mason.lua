@@ -16,4 +16,22 @@ return {
 			})
 		end
 	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			local mason_lspconfig = require('mason-lspconfig')
+			mason_lspconfig.setup({
+				-- list of servers for mason to install
+				ensure_installed = {
+					'tsserver',
+					'html',
+					'cssls',
+					'emmet_ls',
+					'lua_ls',
+					'jsonls',
+					'bashls',
+				},
+			})
+		end
+	}
 }
