@@ -82,6 +82,14 @@ map({ 'n', 'v' }, '<F3>', function()
 	}
 end)
 
+-- local lint = require('lint')
+map('n', '<leader>l', function()
+	require('lint').try_lint()
+	print(vim.fn.executable('biome'))
+	print(vim.fn.executable('eslint'))
+end)
+
+
 -- HACK: '¶' es lo que bota el teclado al hacer <A-j>, teclado mac español
 vim.keymap.set('n', '¶', function()
 	require('todo-comments').jump_next()
