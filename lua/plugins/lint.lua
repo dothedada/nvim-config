@@ -7,14 +7,19 @@ return {
 
 	config = function()
 		local lint = require('lint')
+		local linterJS = {}
 
-		lint.linters_by_ft['markdown'] = { 'markdownlint' }
-		lint.linters_by_ft['bash'] = { 'bash-language-server' }
-		lint.linters_by_ft['zsh'] = { 'bash-language-server' }
-		-- lint.linters_by_ft['javascript'] = { 'biome', 'eslint' }
-		lint.linters_by_ft['javascript'] = { 'eslint' }
-		-- lint.linters_by_ft['typescript'] = { 'biome', 'eslint' }
-		lint.linters_by_ft['typescript'] = { 'eslint' }
+		local biomeAvailable = vim.fn.isdirectory(vim.fn.getcwd() .. '/node_modules/@biomejs')
+		local eslintAvailable = vim.fn.isdirectory(vim.fn.getcwd() .. '/node_modules/@eslint')
+
+		if biomeAvailable == 1 then
+			table.insert(linterJS, 'biomejs')
+		elseif eslintAvailable == 1 then
+			table.insert(linterJS, 'eslint')
+		end
+
+		lint.linters_by_ft['javascript'] = linterJS
+		lint.linters_by_ft['typescript'] = linterJS
 		lint.linters_by_ft['javascriptreact'] = { 'eslint' }
 		lint.linters_by_ft['typescriptreact'] = { 'eslint' }
 		lint.linters_by_ft['svelte'] = { 'eslint' }
@@ -32,12 +37,6 @@ return {
 				end,
 			}
 		)
-
-		vim.keymap.set('n', '<C-l>', function()
-			lint.try_lint()
-		end)
-
 	end,
-
 	-- enabled = false
 }
