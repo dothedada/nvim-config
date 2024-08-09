@@ -49,25 +49,25 @@ end)
 
 -- Telescope
 map('n', '<leader>ff', function()
-	local builtin = require('telescope.builtin')
+	local builtin = require 'telescope.builtin'
 	builtin.find_files()
 end, {})
 map('n', '<leader>fg', function()
-	local builtin = require('telescope.builtin')
+	local builtin = require 'telescope.builtin'
 	builtin.live_grep()
 end, {})
 map('n', '<leader>fb', function()
-	local builtin = require('telescope.builtin')
+	local builtin = require 'telescope.builtin'
 	builtin.buffers()
 end, {})
 map('n', '<leader>fh', function()
-	local builtin = require('telescope.builtin')
+	local builtin = require 'telescope.builtin'
 	builtin.help_tags()
 end, {})
 
 -- Trouble
 map('n', '<C-x>', function()
-	require('trouble').toggle('diagnostics')
+	require('trouble').toggle 'diagnostics'
 end)
 
 -- rename
