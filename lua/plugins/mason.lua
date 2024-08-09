@@ -32,5 +32,16 @@ return {
 				},
 			})
 		end
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		config = function()
+			local mason_tool_installer = require('mason-tool-installer')
+
+			mason_tool_installer.ensure_installed = {
+				"prettier",
+				"stylua",
+			}
+		end
 	}
 }
