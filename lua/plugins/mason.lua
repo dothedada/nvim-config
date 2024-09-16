@@ -22,13 +22,13 @@ return {
 			local mason_lspconfig = require('mason-lspconfig')
 			mason_lspconfig.setup({
 				ensure_installed = {
-					'tsserver',
 					'html',
 					'cssls',
 					'emmet_ls',
 					'lua_ls',
 					'jsonls',
 					'bashls',
+					'ts_ls',
 				},
 			})
 		end
