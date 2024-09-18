@@ -30,7 +30,7 @@ map('v', 'K', ":m '<-2<CR>gv=gv")
 map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Abrir el el undotree
-map('n', '<leader>z', '<cmd>UndotreeToggle<cr>')
+map('n', '<C-z>', '<cmd>UndotreeToggle<cr>')
 
 -- Harpoon
 map('n', '<leader>H', function()
