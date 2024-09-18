@@ -25,11 +25,11 @@ return {
 				['handlebars'] = { 'prettier' },
 				['lua'] = { 'stylua' },
 			},
-			-- format_on_save = {
-			-- lsp_fallback = true,
-			-- async = false,
-			-- timeout_ms = 500,
-			-- },
+			format_on_save = {
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 500,
+			},
 		}
 	end,
 	opts = {},
