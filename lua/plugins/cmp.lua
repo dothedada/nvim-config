@@ -38,6 +38,7 @@ return {
 			},
 			formatting = {
 				fields = { 'abbr', 'kind', 'menu' },
+				expandable_indicator = true,
 				format = require('lspkind').cmp_format {
 					-- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
 					mode = 'symbol_text',
@@ -77,10 +78,10 @@ return {
 				['<C-b>'] = cmp.mapping.scroll_docs(-4),
 				['<C-f>'] = cmp.mapping.scroll_docs(4),
 				['<C-Space>'] = cmp.mapping.complete {},
-				['<CR>'] = cmp.mapping.confirm {
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
-				},
+				-- ['<CR>'] = cmp.mapping.confirm {
+				-- 	behavior = cmp.ConfirmBehavior.Replace,
+				-- 	select = true,
+				-- },
 				['<Tab>'] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
