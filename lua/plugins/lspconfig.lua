@@ -7,7 +7,7 @@ return {
 		'hrsh7th/cmp-nvim-lsp',
 		{ 'williamboman/mason-lspconfig.nvim' },
 		{ 'antosha417/nvim-lsp-file-operations', config = true },
-		{ 'folke/neodev.nvim', opts = {} },
+		{ 'folke/neodev.nvim',                   opts = {} },
 	},
 
 	cmd = { 'LspInfo', 'LspInstall', 'LspUnInstall' },
@@ -16,6 +16,20 @@ return {
 		local lspconfig = require 'lspconfig'
 		local mason_lspconfig = require 'mason-lspconfig'
 		local cmp_nvim_lsp = require 'cmp_nvim_lsp'
+
+		-- Marco de la ventana del lsp
+		local border_style = "rounded"
+		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+			border = border_style,
+		})
+		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+			border = border_style,
+		})
+		vim.diagnostic.config({
+			float = {
+				border = 'rounded',
+			},
+		})
 
 		local map = vim.keymap.set
 		vim.api.nvim_create_autocmd('LspAttach', {
@@ -37,6 +51,9 @@ return {
 
 				opts.desc = 'Show buffer diagnostics'
 				map('n', '<leader>d', '<cmd>Telescope diagnostics bufnr=0<CR>', opts)
+
+				opts.desc = 'Muestra el dignostico en una ventana flotante'
+				map('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
 				opts.desc = 'Go to previous diagnostic'
 				map('n', '[d', vim.diagnostic.goto_prev, opts)
