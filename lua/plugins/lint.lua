@@ -17,11 +17,10 @@ return {
 		end
 
 		if #projectLint == 0 then
-			print 'Sin lint'
-			return
+			print 'Sin lint personalizado en node_modules'
+		else
+			print('linteo personalizado de JS/TS con: ' .. projectLint[1])
 		end
-
-		print('JS/TS lint con: ' .. projectLint[1])
 
 		lint.linters_by_ft = {
 			javascript = projectLint,
@@ -30,6 +29,7 @@ return {
 			typescriptreact = { 'eslint' },
 			svelte = { 'eslint' },
 			vue = { 'eslint' },
+			bash = { 'shellcheck' },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
