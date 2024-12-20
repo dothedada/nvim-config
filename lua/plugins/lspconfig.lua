@@ -7,7 +7,7 @@ return {
 		'hrsh7th/cmp-nvim-lsp',
 		{ 'williamboman/mason-lspconfig.nvim' },
 		{ 'antosha417/nvim-lsp-file-operations', config = true },
-		{ 'folke/neodev.nvim',                   opts = {} },
+		{ 'folke/neodev.nvim', opts = {} },
 	},
 
 	cmd = { 'LspInfo', 'LspInstall', 'LspUnInstall' },
@@ -18,18 +18,19 @@ return {
 		local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
 		-- Marco de la ventana del lsp
-		local border_style = "rounded"
-		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		local border_style = 'rounded'
+		vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
 			border = border_style,
 		})
-		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-			border = border_style,
-		})
-		vim.diagnostic.config({
+		vim.lsp.handlers['textDocument/signatureHelp'] =
+			vim.lsp.with(vim.lsp.handlers.signature_help, {
+				border = border_style,
+			})
+		vim.diagnostic.config {
 			float = {
 				border = 'rounded',
 			},
-		})
+		}
 
 		local map = vim.keymap.set
 		vim.api.nvim_create_autocmd('LspAttach', {
@@ -115,6 +116,25 @@ return {
 					settings = {
 						completions = {
 							completeFunctionCalls = true,
+						},
+					},
+				}
+			end,
+
+			['pylsp'] = function()
+				lspconfig.pylsp.setup {
+					capabilities = capabilities,
+					filetypes = { 'python' },
+					settings = {
+						pylsp = {
+							plugins = {
+								rope = { enabled = true },
+								pyflakes = { enabled = true },
+								yapf = { enabled = true },
+								flake8 = { enabled = true },
+								-- pylint = { enabled = true }, -- linteo mas extricto, normas de presentacion y comentarios
+								-- maccabe = {enabled = true}, -- code complexity
+							},
 						},
 					},
 				}
