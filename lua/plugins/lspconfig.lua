@@ -18,17 +18,34 @@ return {
 		local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
 		-- Marco de la ventana del lsp
+		local min_width = 20
+		local max_width = 60
+		local width = 40
 		local border_style = 'rounded'
 		vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
 			border = border_style,
+			min_width = min_width,
+			max_width = max_width,
+			width = width,
 		})
 		vim.lsp.handlers['textDocument/signatureHelp'] =
 			vim.lsp.with(vim.lsp.handlers.signature_help, {
 				border = border_style,
+				min_width = min_width,
+				width = width,
+				wrap_at = width, -- Forzar el wrap en este ancho
+				max_width = width, -- Máximo ancho fijo
+				max_height = 20, -- Opcional: controlar también la altura
+				focusable = false, -- Opcional: hacer la ventana no focuseable
+				wrap = true, -- Forzar wrap
+				trim_text = true,
 			})
 		vim.diagnostic.config {
 			float = {
-				border = 'rounded',
+				border = border_style,
+				min_width = min_width,
+				max_width = max_width,
+				width = width,
 			},
 		}
 
@@ -130,7 +147,7 @@ return {
 							plugins = {
 								rope = { enabled = true },
 								pyflakes = { enabled = true },
-								yapf = { enabled = true },
+								-- yapf = { enabled = true },
 								flake8 = { enabled = true },
 								-- pylint = { enabled = true }, -- linteo mas extricto, normas de presentacion y comentarios
 								-- maccabe = {enabled = true}, -- code complexity
