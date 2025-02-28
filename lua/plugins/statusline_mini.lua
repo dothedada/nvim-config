@@ -22,8 +22,7 @@ return {
 						HINT = ' ',
 					},
 				}
-				local filename =
-					MiniStatusline.section_filename { trunc_width = 1000 }
+				local filename = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.') --					MiniStatusline.section_filename { trunc_width = 1000 }
 				local fileinfo =
 					MiniStatusline.section_fileinfo { trunc_width = 120 }
 				local location =
