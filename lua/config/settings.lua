@@ -37,7 +37,9 @@ opt.shiftwidth = 4
 opt.breakindent = true
 opt.ai = true -- auto indentado
 -- Navegacion y ventana principal
-opt.colorcolumn = '80'
+-- opt.colorcolumn = '80'
+opt.winblend = 1
+
 opt.scrolloff = 4 -- Lineas visibles arriba y abaj apartir del cursor cuando se hace scroll
 opt.backspace = 'start,eol,indent' -- Comportamiento del backspace cuando llega a borde
 opt.linebreak = true

@@ -67,6 +67,9 @@ map('n', '<C-n>', function()
 	require('harpoon'):list():next()
 end, { desc = 'Va al Harpoon siguiente' })
 
+-- undo tree
+map('n', '<C-z>', vim.cmd.UndotreeToggle)
+
 -- trouble
 map('n', '<C-x>', '<cmd>Trouble diagnostics toggle<cr>') -- Abrir Trouble
 
