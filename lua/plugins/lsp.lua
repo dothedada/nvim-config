@@ -5,20 +5,39 @@ return {
 		opts = {
 			servers = {
 				lua_ls = {},
+				html = {},
+				cssls = {},
 				ts_ls = {
+					-- Eliminar diagnosticos duplicados
 					init_options = {
 						diagnostics = false,
 					},
 				},
 				pylsp = {
-					init_options = {
-						diagnostics = false,
+					-- Eliminar diagnosticos duplicados
+					handlers = {
+						['textDocument/publishDiagnostics'] = function() end,
 					},
 				},
-				html = {},
-				emmet_ls = {},
-				bashls = {},
-				cssls = {},
+				emmet_ls = {
+					filetypes = {
+						'html',
+						'css',
+						'sass',
+						'scss',
+						'less',
+						'javascriptreact',
+						'typescriptreact',
+					},
+				},
+				bashls = {
+					filetypes = { 'sh', 'zsh' },
+					settings = {
+						completions = {
+							completeFunctionCalls = true,
+						},
+					},
+				},
 			},
 		},
 
@@ -30,6 +49,25 @@ return {
 				)
 				lspconfig[server].setup(config)
 			end
+
+			-- Presentacion del  diagnostico
+			local signs = {
+				Error = ' ',
+				Warn = ' ',
+				Hint = '󰠠 ',
+				Info = ' ',
+			}
+			for type, icon in pairs(signs) do
+				local hl = 'DiagnosticSign' .. type
+				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+			end
+			vim.diagnostic.config {
+				virtual_text = {
+					spacing = 4,
+					source = 'if_many',
+				},
+				severity_sort = true,
+			}
 		end,
 	},
 }

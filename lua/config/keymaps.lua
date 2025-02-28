@@ -39,8 +39,10 @@ vim.keymap.set('n', '<leader>l', function()
 end)
 
 -- Telescope
+map('n', 'gd', require('telescope.builtin').lsp_definitions) -- Finder Definicion
+map('n', 'gr', require('telescope.builtin').lsp_references) -- Finder Referencias
+map('n', 'gt', require('telescope.builtin').lsp_type_definitions) -- Finder Tipos
 map('n', '<leader>ff', require('telescope.builtin').find_files) -- Finder Raíz
-map('n', '<leader>fr', require('telescope.builtin').lsp_references) -- Finder LSP
 map('n', '<leader>fg', require('telescope.builtin').live_grep) -- Finder Regex
 map('n', '<leader>fb', require('telescope.builtin').buffers) -- Finder Buffers
 map('n', '<leader>fh', require('telescope.builtin').help_tags) -- Finder Help
