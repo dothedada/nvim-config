@@ -31,6 +31,7 @@ return {
 					'ts_ls',
 					'pylsp',
 				},
+				automatic_installation = true,
 			}
 		end,
 	},

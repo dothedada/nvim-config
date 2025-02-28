@@ -66,3 +66,14 @@ end, { desc = 'Va al Harpoon previo' })
 map('n', '<C-n>', function()
 	require('harpoon'):list():next()
 end, { desc = 'Va al Harpoon siguiente' })
+
+-- trouble
+map('n', '<C-x>', '<cmd>Trouble diagnostics toggle<cr>') -- Abrir Trouble
+
+-- To do
+vim.keymap.set('n', '<A-j>', function()
+	require('todo-comments').jump_next()
+end)
+vim.keymap.set('n', '<A-k>', function()
+	require('todo-comments').jump_prev()
+end)
