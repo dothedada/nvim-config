@@ -5,11 +5,11 @@ return {
 		version = '*',
 		opts = {
 			sources = {
-				default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+				default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
 				providers = {
 					lazydev = {
-						name = "LazyDev",
-						module = "lazydev.integrations.blink",
+						name = 'LazyDev',
+						module = 'lazydev.integrations.blink',
 						score_offset = 100,
 					},
 				},
@@ -39,9 +39,8 @@ return {
 					treesitter_highlighting = true,
 					show_documentation = true,
 				},
-			}
+			},
 		},
-		opts_extend = { 'sources.default' }
+		opts_extend = { 'sources.default' },
 	},
 }
-

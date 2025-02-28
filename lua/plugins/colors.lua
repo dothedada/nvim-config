@@ -1,19 +1,19 @@
 return {
 	{
-		"folke/tokyonight.nvim",
+		'folke/tokyonight.nvim',
 		lazy = false,
 		priority = 1000,
 		terminal_colors = true,
 
 		config = function()
-			local dracula = require('tokyonight')
+			local dracula = require 'tokyonight'
 
-			dracula.setup({
+			dracula.setup {
 				style = 'storm',
 				transparent = true,
-			})
+			}
 
 			vim.cmd.colorscheme 'tokyonight'
-		end
-	}
+		end,
+	},
 }

@@ -2,28 +2,28 @@ local glob = vim.g
 local opt = vim.opt
 
 -- Configuracion global
-glob.mapleader = " "
-glob.maplocalleader = "//"
+glob.mapleader = ' '
+glob.maplocalleader = '//'
 opt.confirm = true
 opt.termguicolors = true
 opt.hlsearch = true
 opt.mouse = 'a'
 opt.updatetime = 250
 opt.timeoutlen = 300
-opt.clipboard = "unnamedplus"
+opt.clipboard = 'unnamedplus'
 
 -- Información columna de la izquierda
 opt.number = true
 opt.relativenumber = true
 opt.signcolumn = 'yes'
 opt.fillchars = {
-    foldopen = '',
-    foldclose = '',
-    -- fold = "⸱",
-    fold = ' ',
-    foldsep = ' ',
-    diff = '╱',
-    eob = ' '
+	foldopen = '',
+	foldclose = '',
+	-- fold = "⸱",
+	fold = ' ',
+	foldsep = ' ',
+	diff = '╱',
+	eob = ' ',
 }
 
 -- Configuracion ventana principal
@@ -54,8 +54,8 @@ opt.winblend = 0
 
 vim.api.nvim_create_autocmd('textYankPost', {
 	desc = 'Resaltado al copiar texto',
-	group = vim.api.nvim_create_augroup("Resaltado", { clear = true }),
+	group = vim.api.nvim_create_augroup('Resaltado', { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
-	end
+	end,
 })

@@ -1,5 +1,5 @@
-print('Iniciando NVIM')
+print 'Iniciando NVIM'
 
-require('config.settings')
-require('config.keymaps')
-require('config.lazy')
+require 'config.settings'
+require 'config.lazy'
+require 'config.keymaps'
