@@ -11,6 +11,8 @@ opt.mouse = 'a'
 opt.updatetime = 250
 opt.timeoutlen = 300
 opt.clipboard = 'unnamedplus'
+opt.undofile = true
+opt.undolevels = 10000
 
 -- Información columna de la izquierda
 opt.number = true
@@ -37,7 +39,7 @@ opt.shiftwidth = 4
 opt.breakindent = true
 opt.ai = true -- auto indentado
 -- Navegacion y ventana principal
--- opt.colorcolumn = '80'
+opt.colorcolumn = '80'
 opt.winblend = 1
 
 opt.scrolloff = 4 -- Lineas visibles arriba y abaj apartir del cursor cuando se hace scroll
