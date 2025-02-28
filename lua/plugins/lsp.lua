@@ -5,8 +5,16 @@ return {
 		opts = {
 			servers = {
 				lua_ls = {},
-				ts_ls = {},
-				pylsp = {},
+				ts_ls = {
+					init_options = {
+						diagnostics = false,
+					},
+				},
+				pylsp = {
+					init_options = {
+						diagnostics = false,
+					},
+				},
 				html = {},
 				emmet_ls = {},
 				bashls = {},

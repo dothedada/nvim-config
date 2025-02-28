@@ -33,6 +33,11 @@ map('n', '<leader>rn', function()
 	vim.lsp.buf.clear_references()
 end) -- Renombra variables
 
+-- Lint
+vim.keymap.set('n', '<leader>l', function()
+	require('lint').try_lint()
+end)
+
 -- Telescope
 map('n', '<leader>ff', require('telescope.builtin').find_files) -- Finder Raíz
 map('n', '<leader>fr', require('telescope.builtin').lsp_references) -- Finder LSP
