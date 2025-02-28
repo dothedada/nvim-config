@@ -13,27 +13,49 @@ map('v', 'K', ":m '<-2<CR>gv=gv") -- Mover seleccion una línea abajo
 map('n', '<leader>tw', ':set wrap! <CR>') -- Aplicar o no el salto de línea
 map(
 	{ 'n', 'v' },
-	'j',
-	"v:count == 0 ? 'gj' : 'j'",
-	{ expr = true, silent = true }
-) -- Mover dentro de la línea texto hacia arriba
-map(
-	{ 'n', 'v' },
 	'k',
 	"v:count == 0 ? 'gk' : 'k'",
 	{ expr = true, silent = true }
-) -- Mover dentro de la línea texto hacia abajo
-map('n', '+', '<C-a>') --Incrementar número en 1, noremap = true
-map('n', '-', '<C-x>') --Reducir número en 1, noremap = true
+) -- Salto de linea hacia arriba en texto wrap
+map(
+	{ 'n', 'v' },
+	'j',
+	"v:count == 0 ? 'gj' : 'j'",
+	{ expr = true, silent = true }
+) -- Salto de linea hacia abajo en texto wrap
+map('n', '+', '<C-a>') -- Incrementar número en 1
+map('n', '-', '<C-x>') -- Reducir número en 1
+map('n', '<leader>rn', function()
+	vim.lsp.buf.document_highlight()
+	vim.defer_fn(function()
+		vim.lsp.buf.rename()
+	end, 100)
+	vim.lsp.buf.clear_references()
+end) -- Renombra variables
 
 -- Telescope
-map('n', '<leader>ff', require('telescope.builtin').find_files) -- Busca archivos desde la raiz del proyecto
-map('n', '<leader>fr', require('telescope.builtin').lsp_references) -- Busca referencias en el LSP
-map('n', '<leader>fg', require('telescope.builtin').live_grep) -- Busca expresion dentro de los archivos del directorio
-map('n', '<leader>fb', require('telescope.builtin').buffers) -- Muestra los buffers abiertos
-map('n', '<leader>fh', require('telescope.builtin').help_tags) -- Busca dentro de la documentacion de ayuda
+map('n', '<leader>ff', require('telescope.builtin').find_files) -- Finder Raíz
+map('n', '<leader>fr', require('telescope.builtin').lsp_references) -- Finder LSP
+map('n', '<leader>fg', require('telescope.builtin').live_grep) -- Finder Regex
+map('n', '<leader>fb', require('telescope.builtin').buffers) -- Finder Buffers
+map('n', '<leader>fh', require('telescope.builtin').help_tags) -- Finder Help
 map('n', '<leader>cc', function()
 	require('telescope.builtin').find_files {
 		cwd = vim.fn.stdpath 'config',
 	}
 end) -- Abre la carpeta con archivos de configuracion
+
+-- Harpoon
+map('n', '<leader>H', function()
+	require('harpoon'):list():add()
+end, { desc = 'Añade archivo a Harpoon' })
+map('n', '<leader>h', function()
+	local harpoon = require 'harpoon'
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = 'Abre ventana de Harpoon' })
+map('n', '<C-p>', function()
+	require('harpoon'):list():prev()
+end, { desc = 'Va al Harpoon previo' })
+map('n', '<C-n>', function()
+	require('harpoon'):list():next()
+end, { desc = 'Va al Harpoon siguiente' })

@@ -36,22 +36,19 @@ opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.breakindent = true
 opt.ai = true -- auto indentado
-
+-- Navegacion y ventana principal
 opt.colorcolumn = '80'
-opt.guicursor = 'i-ci:ver100-Cursor-blinkwait300-blinkon200-blinkoff150' -- cursor en insert mode
 opt.scrolloff = 4 -- Lineas visibles arriba y abaj apartir del cursor cuando se hace scroll
 opt.backspace = 'start,eol,indent' -- Comportamiento del backspace cuando llega a borde
-opt.cursorline = true -- Enable highlighting of the current line
 opt.linebreak = true
 opt.showbreak = '>   ' -- Make it so that long lines wrap smartly
--- opt.wrap = false -- Disable line wrap
 opt.breakindent = true
 opt.ai = true -- auto indentado
 opt.completeopt = 'menuone,noselect' -- Autocompletado
-
-opt.pumblend = 0
-opt.winblend = 0
-
+-- opt.wrap = false -- Disable line wrap
+-- Interfase
+opt.cursorline = true -- Enable highlighting of the current line
+opt.guicursor = 'i-ci:ver100-Cursor-blinkwait300-blinkon200-blinkoff150' -- cursor en insert mode
 vim.api.nvim_create_autocmd('textYankPost', {
 	desc = 'Resaltado al copiar texto',
 	group = vim.api.nvim_create_augroup('Resaltado', { clear = true }),
@@ -59,3 +56,5 @@ vim.api.nvim_create_autocmd('textYankPost', {
 		vim.highlight.on_yank()
 	end,
 })
+opt.pumblend = 0
+opt.winblend = 0
