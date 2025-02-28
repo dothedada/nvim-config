@@ -7,6 +7,10 @@ return {
 				lua_ls = {},
 				ts_ls = {},
 				pylsp = {},
+				html = {},
+				emmet_ls = {},
+				bashls = {},
+				cssls = {},
 			}
 		},
 
