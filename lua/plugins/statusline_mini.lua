@@ -9,7 +9,6 @@ return {
 	{
 		'echasnovski/mini.statusline',
 		version = '*',
-
 		config = function()
 			local data = function()
 				local mode, mode_hl =
