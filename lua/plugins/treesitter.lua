@@ -1,90 +1,37 @@
 return {
-	'nvim-treesitter/nvim-treesitter',
-
-	build = ':TSUpdate',
-	event = 'VeryLazy',
-	init = function(plugin)
-		require('lazy.core.loader').add_to_rtp(plugin)
-		require 'nvim-treesitter.query_predicates'
-	end,
-	
-	dependencies = {
-		{
-			'nvim-treesitter/nvim-treesitter-textobjects',
-			config = function()
-				-- When in diff mode, we want to use the default
-				-- vim text objects c & C instead of the treesitter ones.
-				local move = require 'nvim-treesitter.textobjects.move' ---@type table<string,fun(...)>
-				local configs = require 'nvim-treesitter.configs'
-				for name, fn in pairs(move) do
-					if name:find 'goto' == 1 then
-						move[name] = function(q, ...)
-							if vim.wo.diff then
-								local config =
-									configs.get_module('textobjects.move')[name] ---@type table<string,string>
-								for key, query in pairs(config or {}) do
-									if q == query and key:find '[%]%[][cC]' then
-										vim.cmd('normal! ' .. key)
-										return
-									end
-								end
-							end
-							return fn(q, ...)
+	{
+		'nvim-treesitter/nvim-treesitter',
+		build = ':TSUpdate',
+		config = function()
+			require('nvim-treesitter.configs').setup {
+				ensure_installed = {
+					'c',
+					'lua',
+					'vim',
+					'vimdoc',
+					'query',
+					'markdown',
+					'markdown_inline',
+				},
+				modules = {},
+				sync_install = false,
+				ignore_install = {},
+				auto_install = true,
+				highlight = {
+					enable = true,
+					disable = function(_, buf)
+						local max_filesize = 100 * 1024 -- 100 KB
+						local ok, stats = pcall(
+							vim.loop.fs_stat,
+							vim.api.nvim_buf_get_name(buf)
+						)
+						if ok and stats and stats.size > max_filesize then
+							return true
 						end
-					end
-				end
-			end,
-		},
+					end,
+					additional_vim_regex_highlighting = false,
+				},
+			}
+		end,
 	},
-
-	cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall' },
-	
-	opts = {
-		highlight = { enable = true },
-		indent = { enable = true },
-		ensure_installed = {
-			'bash',
-			'c',
-			'diff',
-			'html',
-			'javascript',
-			'jsdoc',
-			'json',
-			'jsonc',
-			'lua',
-			'luadoc',
-			'luap',
-			'markdown',
-			'markdown_inline',
-			'python',
-			'query',
-			'regex',
-			'toml',
-			'tsx',
-			'typescript',
-			'vim',
-			'vimdoc',
-			'yaml',
-		},
-		auto_install = true,
-		sync_install = false,
-		modules = {},
-		incremental_selection = { enable = true },
-		textobjects = { move = { enable = true } },
-	},
-
-	config = function(_, opts)
-		if type(opts.ensure_installed) == 'table' then
-			---@type table<string, boolean>
-			local added = {}
-			opts.ensure_installed = vim.tbl_filter(function(lang)
-				if added[lang] then
-					return false
-				end
-				added[lang] = true
-				return true
-			end, opts.ensure_installed)
-		end
-		require('nvim-treesitter.configs').setup(opts)
-	end,
 }

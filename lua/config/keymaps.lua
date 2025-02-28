@@ -1,99 +1,82 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 local map = vim.keymap.set
 
--- Navegador de archivos
-map('n', '<leader>e', ':Explore <CR>')
+-- Globales
+map('n', '<leader>e', '<cmd>Explore<CR>') -- Abrir newtr
+map('n', '<leader><leader>x', '<cmd>source %<CR>') -- Ejecutar el archivo
+map('v', '<leader>x', '<cmd>:lua<CR>') -- Ejecuta seleccion en Lua
 
--- Evitar yank cuando se usa X
-map('n', 'x', '"_x')
-
--- Borrar marcación  de cadenas buscadas
-map('n', '<leader>rs', ':noh <CR>')
-
--- Operaciones con WrapText
-map('n', '<leader>tw', ':set wrap! <CR>')
--- Salta entre la línea cuando el texto está wrapeado y no a la siguiente línea
-map({ 'n', 'v' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map({ 'n', 'v' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Incrementar o disminuir en 1 algún número cuando estoy en modo normal
-map('n', '+', '<C-a>')
-map('n', '-', '<C-x>')
-
--- Mover bloques de texto
-map('v', 'J', ":m '>+1<CR>gv=gv")
-map('v', 'K', ":m '<-2<CR>gv=gv")
-
--- Evita que la barra espaciadora haga algo por sí sola en N y V modes
-map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
--- Abrir el el undotree
-map('n', '<C-z>', '<cmd>UndotreeToggle<cr>')
-
--- Harpoon
-map('n', '<leader>H', function()
-	require('harpoon'):list():add()
-end)
-map('n', '<leader>h', function()
-	local harpoon = require 'harpoon'
-	harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
-map('n', '<C-p>', function()
-	require('harpoon'):list():prev()
-end)
-map('n', '<C-n>', function()
-	require('harpoon'):list():next()
-end)
-
--- Telescope
-map('n', '<leader>ff', function()
-	local builtin = require 'telescope.builtin'
-	builtin.find_files()
-end, {})
-map('n', '<leader>fg', function()
-	local builtin = require 'telescope.builtin'
-	builtin.live_grep()
-end, {})
-map('n', '<leader>fb', function()
-	local builtin = require 'telescope.builtin'
-	builtin.buffers()
-end, {})
-map('n', '<leader>fh', function()
-	local builtin = require 'telescope.builtin'
-	builtin.help_tags()
-end, {})
-
--- Trouble
-map('n', '<C-x>', function()
-	require('trouble').toggle 'diagnostics'
-end)
-
--- rename
+-- Edición de texto
+map('n', 'x', '"_x') --"Eliminar caracter sin hacerle yank"
+map('n', '<leader>rs', ':noh<CR>') -- Borrar marcacion de cadena buscada
+map('v', 'J', ":m '>+1<CR>gv=gv") -- Mover seleccion una línea arriba
+map('v', 'K', ":m '<-2<CR>gv=gv") -- Mover seleccion una línea abajo
+map('n', '<leader>tw', ':set wrap! <CR>') -- Aplicar o no el salto de línea
+map(
+	{ 'n', 'v' },
+	'k',
+	"v:count == 0 ? 'gk' : 'k'",
+	{ expr = true, silent = true }
+) -- Salto de linea hacia arriba en texto wrap
+map(
+	{ 'n', 'v' },
+	'j',
+	"v:count == 0 ? 'gj' : 'j'",
+	{ expr = true, silent = true }
+) -- Salto de linea hacia abajo en texto wrap
+map('n', '+', '<C-a>') -- Incrementar número en 1
+map('n', '-', '<C-x>') -- Reducir número en 1
 map('n', '<leader>rn', function()
 	vim.lsp.buf.document_highlight()
 	vim.defer_fn(function()
 		vim.lsp.buf.rename()
 	end, 100)
 	vim.lsp.buf.clear_references()
+end) -- Renombra variables
+
+-- Lint
+vim.keymap.set('n', '<leader>l', function()
+	require('lint').try_lint()
 end)
 
--- Prettier
-map({ 'n', 'v' }, '<F3>', function()
-	require('conform').format {
-		lsp_fallback = true,
-		async = false,
-		timeout_ms = 500,
+-- Telescope
+map('n', 'gd', require('telescope.builtin').lsp_definitions) -- Finder Definicion
+map('n', 'gr', require('telescope.builtin').lsp_references) -- Finder Referencias
+map('n', 'gt', require('telescope.builtin').lsp_type_definitions) -- Finder Tipos
+map('n', '<leader>ff', require('telescope.builtin').find_files) -- Finder Raíz
+map('n', '<leader>fg', require('telescope.builtin').live_grep) -- Finder Regex
+map('n', '<leader>fb', require('telescope.builtin').buffers) -- Finder Buffers
+map('n', '<leader>fh', require('telescope.builtin').help_tags) -- Finder Help
+map('n', '<leader>cc', function()
+	require('telescope.builtin').find_files {
+		cwd = vim.fn.stdpath 'config',
 	}
-end)
+end) -- Abre la carpeta con archivos de configuracion
 
--- HACK: '¶' es lo que bota el teclado al hacer <A-j>, teclado mac español
-vim.keymap.set('n', '¶', function()
+-- Harpoon
+map('n', '<leader>H', function()
+	require('harpoon'):list():add()
+end, { desc = 'Añade archivo a Harpoon' })
+map('n', '<leader>h', function()
+	local harpoon = require 'harpoon'
+	harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = 'Abre ventana de Harpoon' })
+map('n', '<C-p>', function()
+	require('harpoon'):list():prev()
+end, { desc = 'Va al Harpoon previo' })
+map('n', '<C-n>', function()
+	require('harpoon'):list():next()
+end, { desc = 'Va al Harpoon siguiente' })
+
+-- undo tree
+map('n', '<C-z>', vim.cmd.UndotreeToggle)
+
+-- trouble
+map('n', '<C-x>', '<cmd>Trouble diagnostics toggle<cr>') -- Abrir Trouble
+
+-- To do
+vim.keymap.set('n', '<A-j>', function()
 	require('todo-comments').jump_next()
 end)
-
--- HACK: '§' es lo que bota el teclado al hacer <A-k>, teclado mac español
-vim.keymap.set('n', '§', function()
+vim.keymap.set('n', '<A-k>', function()
 	require('todo-comments').jump_prev()
 end)

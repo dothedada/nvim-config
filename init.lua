@@ -1,6 +1,5 @@
-require("config.keymaps")
-require("config.settings")
-require("config.commands")
-require("config.lazy")
+print 'Iniciando NVIM'
 
-pcall(vim.cmd.colorscheme, "catppuccin")
+require 'config.settings'
+require 'config.lazy'
+require 'config.keymaps'

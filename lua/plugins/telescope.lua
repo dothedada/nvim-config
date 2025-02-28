@@ -1,33 +1,26 @@
 return {
-	'nvim-telescope/telescope.nvim',
-
-	branch = '0.1.x',
-	dependencies = {
-		{ 'nvim-lua/plenary.nvim' },
-		{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-	},
-
-	cmd = { 'Telescope' },
-
-	opts = {
-		defaults = {
-			file_ignore_patterns = {
-				'.git/',
-				'.cache',
-				'node_modules/',
-				'%.o',
-				'%.a',
-				'%.out',
-				'%.class',
-				'%.pdf',
-				'%.mkv',
-				'%.mp4',
-				'%.zip',
+	{
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.8',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			{
+				'nvim-telescope/telescope-fzf-native.nvim',
+				build = 'make',
 			},
 		},
-	},
 
-	config = function()
-		require('telescope').load_extension 'fzf'
-	end,
+		config = function()
+			require('telescope').setup {
+				pickers = {
+					buffers = {
+						theme = 'ivy',
+					},
+				},
+				extensions = {
+					fzf = {},
+				},
+			}
+		end,
+	},
 }

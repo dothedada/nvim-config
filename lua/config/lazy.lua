@@ -1,32 +1,29 @@
-local lazy = {}
-
-function lazy.install(path)
-	if not vim.loop.fs_stat(path) then
-		vim.fn.system {
-			'git',
-			'clone',
-			'--filter=blob:none',
-			'https://github.com/folke/lazy.nvim.git',
-			'--branch=stable', -- latest stable release
-			path,
-		}
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+	local out = vim.fn.system {
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'--branch=stable',
+		lazyrepo,
+		lazypath,
+	}
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+			{ out, 'WarningMsg' },
+			{ '\nPress any key to exit...' },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
 	end
 end
 
-function lazy.setup(plugins)
-	if vim.g.plugins_ready then
-		return
-	end
+vim.opt.rtp:prepend(lazypath)
 
-	lazy.install(lazy.path) -- descomentar sólo cuando lazy no esté instalado
-
-	vim.opt.rtp:prepend(lazy.path)
-
-	require('lazy').setup(plugins, lazy.opts)
-	vim.g.plugins_ready = true
-end
-
-lazy.path = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-lazy.opts = {}
-
-lazy.setup { { import = 'plugins' } }
+require('lazy').setup {
+	spec = {
+		{ import = 'plugins' },
+	},
+}
