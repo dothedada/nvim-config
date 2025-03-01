@@ -7,6 +7,7 @@ return {
 
 		conform.setup {
 			formatters_by_ft = {
+				['c'] = { 'clang-format' },
 				['bash'] = { 'shfmt' },
 				['javascript'] = { 'prettier' },
 				['javascriptreact'] = { 'prettier' },
@@ -20,8 +21,8 @@ return {
 				['json'] = { 'prettier' },
 				['jsonc'] = { 'prettier' },
 				['yaml'] = { 'prettier' },
-				-- ['markdown'] = { 'mdformat' },
-				-- ['markdown.mdx'] = { 'mdformat' },
+				['markdown'] = { 'markdownlint' },
+				['markdown.mdx'] = { 'markdownlint' },
 				['graphql'] = { 'prettier' },
 				['handlebars'] = { 'prettier' },
 				['lua'] = { 'stylua' },

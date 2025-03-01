@@ -74,9 +74,38 @@ map('n', '<C-z>', vim.cmd.UndotreeToggle)
 map('n', '<C-x>', '<cmd>Trouble diagnostics toggle<cr>') -- Abrir Trouble
 
 -- To do
-vim.keymap.set('n', '<A-j>', function()
+map('n', '<A-j>', function()
 	require('todo-comments').jump_next()
 end)
-vim.keymap.set('n', '<A-k>', function()
+map('n', '<A-k>', function()
 	require('todo-comments').jump_prev()
 end)
+
+local function show_documentation()
+	local filetype = vim.bo.filetype
+	if vim.tbl_contains({ 'vim', 'help' }, filetype) then
+		vim.cmd('h ' .. vim.fn.expand '<cword>')
+	elseif vim.tbl_contains({ 'man' }, filetype) then
+		vim.cmd('Man ' .. vim.fn.expand '<cword>')
+	elseif vim.fn.expand '%:t' == 'Cargo.toml' then
+		require('crates').show_popup()
+	else
+		local params = vim.lsp.util.make_position_params()
+		vim.lsp.buf_request(0, 'textDocument/hover', params, function(_, result)
+			if result and result.contents then
+				local lines = vim.lsp.util.convert_input_to_markdown_lines(
+					result.contents
+				)
+				vim.lsp.util.open_floating_preview(lines, 'markdown', {
+					max_width = 60,
+					max_height = 50,
+
+					border = 'rounded', -- Tipo de borde
+				})
+			end
+		end)
+	end
+end
+
+-- Asignar la función a la tecla K
+map('n', 'K', show_documentation, { desc = 'Mostrar documentación' })

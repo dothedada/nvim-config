@@ -9,16 +9,19 @@ return {
 		local lint = require 'lint'
 		local projectLint = {}
 
-		if vim.fn.isdirectory 'node_modules/@biomejs' == 1 then
-			table.insert(projectLint, 'biomejs')
-		elseif vim.fn.isdirectory 'node_modules/@eslint' == 1 then
-			table.insert(projectLint, 'eslint')
-		end
+		local fileType = vim.bo.filetype
+		if fileType == 'javascript' or fileType == 'javascript' then
+			if vim.fn.isdirectory 'node_modules/@biomejs' == 1 then
+				table.insert(projectLint, 'biomejs')
+			elseif vim.fn.isdirectory 'node_modules/@eslint' == 1 then
+				table.insert(projectLint, 'eslint')
+			end
 
-		if #projectLint == 0 then
-			print 'Sin lint personalizado en node_modules'
-		else
-			print('linteo personalizado de JS/TS con: ' .. projectLint[1])
+			if #projectLint == 0 then
+				print 'Sin lint personalizado en node_modules'
+			else
+				print('linteo personalizado de JS/TS con: ' .. projectLint[1])
+			end
 		end
 
 		lint.linters_by_ft = {
@@ -30,6 +33,7 @@ return {
 			vue = { 'eslint' },
 			bash = { 'shellcheck' },
 			python = { 'flake8' },
+			c = { 'cpplint' },
 		}
 
 		local lint_augroup =

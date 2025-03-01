@@ -5,7 +5,13 @@ return {
 		version = '*',
 		opts = {
 			sources = {
-				default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+				default = {
+					'lsp',
+					'snippets',
+					'buffer',
+					'path',
+					'lazydev',
+				},
 				providers = {
 					lazydev = {
 						name = 'LazyDev',
@@ -35,7 +41,7 @@ return {
 					max_width = 80,
 					max_height = 50,
 					border = 'rounded',
-					scrollbar = true,
+					-- scrollbar = true,
 					treesitter_highlighting = true,
 					show_documentation = true,
 				},

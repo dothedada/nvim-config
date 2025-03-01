@@ -5,9 +5,10 @@ return {
 		config = function()
 			require('mini.indentscope').setup {
 				draw = {
+					delay = 0,
 					animation = require('mini.indentscope').gen_animation.linear {
-						duration = 1,
-						unit = 'total',
+						duration = 10,
+						unit = 'step',
 					},
 				},
 				symbol = '│', -- Símbolo para el alcance de indentación

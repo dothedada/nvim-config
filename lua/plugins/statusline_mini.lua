@@ -16,10 +16,10 @@ return {
 				local git = MiniStatusline.section_git { trunc_width = 40 }
 				local diagnostics = MiniStatusline.section_diagnostics {
 					signs = {
-						ERROR = ' ',
+						ERROR = ' ',
 						WARN = ' ',
-						INFO = '󰠠 ',
-						HINT = ' ',
+						INFO = ' ',
+						HINT = ' ',
 					},
 				}
 				local filename = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.') --					MiniStatusline.section_filename { trunc_width = 1000 }

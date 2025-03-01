@@ -22,14 +22,24 @@ return {
 			local mason_lspconfig = require 'mason-lspconfig'
 			mason_lspconfig.setup {
 				ensure_installed = {
-					'html',
-					'cssls',
-					'emmet_ls',
-					'lua_ls',
-					'jsonls',
-					'bashls',
-					'ts_ls',
-					'pylsp',
+					'bashls', -- lsp
+					'black', -- f
+					'biome', -- l
+					'clang-format', -- f
+					'cpplint', -- l
+					'cssls', -- lsp
+					'emmet_ls', -- lsp
+					'eslint', -- l
+					'flake8', -- l
+					'html', -- lsp
+					'lua_ls', -- lsp
+					'markdownlint', -- f
+					'prettier', -- f
+					'pylsp', -- lsp
+					'shellcheck', -- l
+					'shfmt', -- f
+					'stylua', -- f
+					'ts_ls', -- lsp
 				},
 				automatic_installation = true,
 			}

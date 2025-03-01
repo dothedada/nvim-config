@@ -4,6 +4,7 @@ return {
 
 		opts = {
 			servers = {
+				clangd = {},
 				lua_ls = {},
 				html = {},
 				cssls = {},
@@ -50,17 +51,18 @@ return {
 				lspconfig[server].setup(config)
 			end
 
-			-- Presentacion del  diagnostico
 			local signs = {
 				Error = ' ',
 				Warn = ' ',
 				Hint = '󰠠 ',
 				Info = ' ',
 			}
+
 			for type, icon in pairs(signs) do
 				local hl = 'DiagnosticSign' .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
 			end
+
 			vim.diagnostic.config {
 				virtual_text = {
 					spacing = 4,
