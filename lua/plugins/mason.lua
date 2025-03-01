@@ -38,7 +38,7 @@ return {
 					'pylsp', -- lsp
 					'shellcheck', -- l
 					'shfmt', -- f
-					'stylua', -- f
+					-- 'stylua', -- f
 					'ts_ls', -- lsp
 				},
 				automatic_installation = true,
