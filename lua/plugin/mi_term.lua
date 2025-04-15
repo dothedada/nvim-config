@@ -7,18 +7,18 @@ local state = {
 
 local function create_bottom_window(opts)
 	local buf = nil
-	if vim.api.nvim_buf_is_valid(opts.buf) then
+	if opts and opts.buf and vim.api.nvim_buf_is_valid(opts.buf) then
 		buf = opts.buf
 	else
 		buf = vim.api.nvim_create_buf(false, true)
-		vim.opt.number = false
-		vim.opt.relativenumber = false
 	end
 
 	vim.cmd 'botright 15split'
 
 	local win = vim.api.nvim_get_current_win()
 	vim.api.nvim_win_set_buf(win, buf)
+	vim.api.nvim_set_option_value('number', false, { win = win })
+	vim.api.nvim_set_option_value('relativenumber', false, { win = win })
 
 	return { buf = buf, win = win }
 end
