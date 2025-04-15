@@ -6,9 +6,24 @@ return {
 			servers = {
 				clangd = {},
 				lua_ls = {},
-				html = {},
+				html = {
+					filetypes = {
+						'html',
+						'ejs',
+						'liquid',
+					},
+				},
 				cssls = {},
+				taplo = {},
 				ts_ls = {
+					filetypes = {
+						'javascript',
+						'typescript',
+						'javascriptreact',
+						'typescriptreact',
+						'ejs',
+					},
+
 					-- Eliminar diagnosticos duplicados
 					init_options = {
 						diagnostics = false,
@@ -29,6 +44,8 @@ return {
 						'less',
 						'javascriptreact',
 						'typescriptreact',
+						'ejs',
+						'liquid',
 					},
 				},
 				bashls = {
@@ -39,6 +56,7 @@ return {
 						},
 					},
 				},
+				gopls = {},
 			},
 		},
 

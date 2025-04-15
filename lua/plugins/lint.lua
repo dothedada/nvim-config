@@ -34,6 +34,9 @@ return {
 			bash = { 'shellcheck' },
 			python = { 'flake8' },
 			c = { 'cpplint' },
+			html = { 'curlylint' },
+			ejs = { 'curlylint' },
+			-- go = { 'golangci-lint' },
 		}
 
 		local lint_augroup =

@@ -3,7 +3,7 @@ local map = vim.keymap.set
 -- Globales
 map('n', '<leader>e', '<cmd>Explore<CR>') -- Abrir newtr
 map('n', '<leader><leader>x', '<cmd>source %<CR>') -- Ejecutar el archivo
-map('v', '<leader>x', '<cmd>:lua<CR>') -- Ejecuta seleccion en Lua
+map('v', '<leader>x', ':lua<CR>') -- Ejecuta seleccion en Lua
 
 -- Edición de texto
 map('n', 'x', '"_x') --"Eliminar caracter sin hacerle yank"
@@ -100,7 +100,7 @@ local function show_documentation()
 					max_width = 60,
 					max_height = 50,
 
-					border = 'rounded', -- Tipo de borde
+					border = 'rounded',
 				})
 			end
 		end)
@@ -109,3 +109,12 @@ end
 
 -- Asignar la función a la tecla K
 map('n', 'K', show_documentation, { desc = 'Mostrar documentación' })
+
+-- Miniterminal
+map(
+	{ 'n', 't' },
+	'<leader>tt',
+	'<cmd>Miniterm<CR>',
+	{ desc = 'abre minterminal' }
+)
+map('t', '<esc><esc>', '<C-\\><C-n>') -- Entra al modo vim dentro del terminal
