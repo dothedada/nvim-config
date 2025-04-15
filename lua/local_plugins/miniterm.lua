@@ -1,3 +1,4 @@
+print 'carajo'
 local state = {
 	window = {
 		buf = -1,
