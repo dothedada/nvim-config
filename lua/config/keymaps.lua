@@ -118,3 +118,8 @@ map(
 	{ desc = 'abre minterminal' }
 )
 map('t', '<esc><esc>', '<C-\\><C-n>') -- Entra al modo vim dentro del terminal
+
+-- Deshabilitar F1
+map('n', '<F1>', '<Nop>')
+map('i', '<F1>', '<Nop>')
+map('v', '<F1>', '<Nop>')
