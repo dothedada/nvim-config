@@ -111,12 +111,7 @@ end
 map('n', 'K', show_documentation, { desc = 'Mostrar documentación' })
 
 -- Miniterminal
-map(
-	{ 'n', 't' },
-	'<leader>tt',
-	'<cmd>Miniterm<CR>',
-	{ desc = 'abre minterminal' }
-)
+map({ 'n', 't' }, '<C-t>', '<cmd>Miniterm<CR>') -- abre minterminal
 map('t', '<esc><esc>', '<C-\\><C-n>') -- Entra al modo vim dentro del terminal
 
 -- Deshabilitar F1

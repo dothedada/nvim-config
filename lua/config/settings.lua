@@ -38,6 +38,7 @@ opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.breakindent = true
 opt.ai = true -- auto indentado
+
 -- Navegacion y ventana principal
 opt.colorcolumn = '80'
 opt.winblend = 1
@@ -50,6 +51,7 @@ opt.breakindent = true
 opt.ai = true -- auto indentado
 opt.completeopt = 'menuone,noselect' -- Autocompletado
 -- opt.wrap = false -- Disable line wrap
+
 -- Interfase
 opt.cursorline = true -- Enable highlighting of the current line
 opt.guicursor = 'i-ci:ver100-Cursor-blinkwait300-blinkon200-blinkoff150' -- cursor en insert mode

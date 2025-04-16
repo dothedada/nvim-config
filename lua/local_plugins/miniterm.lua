@@ -1,4 +1,3 @@
-print 'carajo'
 local state = {
 	window = {
 		buf = -1,
@@ -6,7 +5,7 @@ local state = {
 	},
 }
 
-local function create_bottom_window(opts)
+local function create_bottom_term(opts)
 	local buf = nil
 	if opts and opts.buf and vim.api.nvim_buf_is_valid(opts.buf) then
 		buf = opts.buf
@@ -14,7 +13,7 @@ local function create_bottom_window(opts)
 		buf = vim.api.nvim_create_buf(false, true)
 	end
 
-	vim.cmd 'botright 15split'
+	vim.cmd 'botright 10split'
 
 	local win = vim.api.nvim_get_current_win()
 	vim.api.nvim_win_set_buf(win, buf)
@@ -26,10 +25,11 @@ end
 
 local toggle_terminal = function()
 	if not vim.api.nvim_win_is_valid(state.window.win) then
-		state.window = create_bottom_window { buf = state.window.buf }
+		state.window = create_bottom_term { buf = state.window.buf }
 		if vim.bo[state.window.buf].buftype ~= 'terminal' then
 			vim.cmd.terminal()
 		end
+		vim.cmd 'startinsert'
 	else
 		vim.api.nvim_win_hide(state.window.win)
 	end

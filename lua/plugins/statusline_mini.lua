@@ -22,7 +22,13 @@ return {
 						HINT = ' ',
 					},
 				}
-				local filename = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.') --					MiniStatusline.section_filename { trunc_width = 1000 }
+				local filename = function()
+					if vim.bo.buftype == 'terminal' then
+						return ''
+					else
+						return vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
+					end
+				end
 				local fileinfo =
 					MiniStatusline.section_fileinfo { trunc_width = 120 }
 				local location =
