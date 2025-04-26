@@ -22,13 +22,11 @@ return {
 						HINT = ' ',
 					},
 				}
-				local filename = function()
-					if vim.bo.buftype == 'terminal' then
-						return ''
-					else
-						return vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
-					end
-				end
+
+				local filename = vim.bo.buftype == 'terminal'
+						and 'May Baphomet, our lord and savior, bless this terminal. '
+					or vim.fn.fnamemodify(vim.fn.expand '%', ':~:.')
+
 				local fileinfo =
 					MiniStatusline.section_fileinfo { trunc_width = 120 }
 				local location =

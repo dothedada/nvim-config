@@ -44,5 +44,8 @@ return {
 				automatic_installation = true,
 			}
 		end,
+
+		vim.filetype.add { extension = { ejs = 'ejs' } },
+		vim.filetype.add { extension = { liquid = 'liquid' } },
 	},
 }

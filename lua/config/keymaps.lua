@@ -114,6 +114,22 @@ map('n', 'K', show_documentation, { desc = 'Mostrar documentación' })
 map({ 'n', 't' }, '<C-t>', '<cmd>Miniterm<CR>') -- abre minterminal
 map('t', '<esc><esc>', '<C-\\><C-n>') -- Entra al modo vim dentro del terminal
 
+-- Quickfix
+local function quickfixopen()
+	for _, win in pairs(vim.fn.getwininfo()) do
+		if win.quickfix == 1 then
+			vim.cmd.cclose()
+			return
+		end
+	end
+
+	vim.cmd.copen()
+end
+map('n', '<leader>cf', quickfixopen)
+map('n', '<A-c>', '<cmd>cexpr []<CR>')
+map('n', '<A-n>', vim.cmd.cn)
+map('n', '<A-p>', vim.cmd.cp)
+
 -- Deshabilitar F1
 map('n', '<F1>', '<Nop>')
 map('i', '<F1>', '<Nop>')

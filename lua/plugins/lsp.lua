@@ -9,8 +9,8 @@ return {
 				html = {
 					filetypes = {
 						'html',
-						'ejs',
 						'liquid',
+						'ejs',
 					},
 				},
 				cssls = {},
@@ -21,7 +21,6 @@ return {
 						'typescript',
 						'javascriptreact',
 						'typescriptreact',
-						'ejs',
 					},
 
 					-- Eliminar diagnosticos duplicados
@@ -35,17 +34,17 @@ return {
 						['textDocument/publishDiagnostics'] = function() end,
 					},
 				},
-				emmet_ls = {
+				emmet_language_server = {
 					filetypes = {
 						'html',
+						'ejs',
+						'liquid',
 						'css',
 						'sass',
 						'scss',
 						'less',
 						'javascriptreact',
 						'typescriptreact',
-						'ejs',
-						'liquid',
 					},
 				},
 				bashls = {
