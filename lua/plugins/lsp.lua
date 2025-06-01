@@ -4,6 +4,14 @@ return {
 
 		opts = {
 			servers = {
+				-- bashls = {
+				-- 	filetypes = { 'sh', 'zsh' },
+				-- 	settings = {
+				-- 		completions = {
+				-- 			completeFunctionCalls = true,
+				-- 		},
+				-- 	},
+				-- },
 				clangd = {},
 				lua_ls = {},
 				html = {
@@ -12,26 +20,22 @@ return {
 						'liquid',
 						'ejs',
 					},
+					init_options = {
+						provideFormatter = false,
+					},
 				},
 				cssls = {},
 				taplo = {},
-				ts_ls = {
-					filetypes = {
-						'javascript',
-						'typescript',
-						'javascriptreact',
-						'typescriptreact',
-					},
-
-					-- Eliminar diagnosticos duplicados
-					init_options = {
-						diagnostics = false,
-					},
-				},
-				pylsp = {
-					-- Eliminar diagnosticos duplicados
-					handlers = {
-						['textDocument/publishDiagnostics'] = function() end,
+				ts_ls = {},
+				pyright = {
+					settings = {
+						python = {
+							analysis = {
+								typeCheckingMode = 'strict', -- o "strict"
+								autoSearchPaths = true,
+								useLibraryCodeForTypes = true,
+							},
+						},
 					},
 				},
 				emmet_language_server = {
@@ -47,15 +51,21 @@ return {
 						'typescriptreact',
 					},
 				},
-				bashls = {
-					filetypes = { 'sh', 'zsh' },
+				gopls = {
 					settings = {
-						completions = {
-							completeFunctionCalls = true,
+						gopls = {
+							-- Desactivar análisis que hace golangci-lint
+							analyses = {
+								unusedparams = false, -- Parámetros no usados
+								shadow = false, -- Variables sombreadas
+								unusedwrite = false, -- Escrituras no usadas
+								useany = false, -- Usar any en lugar de interface{}
+							},
+							staticcheck = false, -- Desactivar staticcheck integrado
+							vulncheck = 'Off', -- Desactivar verificación de vulnerabilidades
 						},
 					},
 				},
-				gopls = {},
 			},
 		},
 
@@ -68,23 +78,20 @@ return {
 				lspconfig[server].setup(config)
 			end
 
-			local signs = {
-				Error = ' ',
-				Warn = ' ',
-				Hint = '󰠠 ',
-				Info = ' ',
-			}
-
-			for type, icon in pairs(signs) do
-				local hl = 'DiagnosticSign' .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-			end
-
 			vim.diagnostic.config {
 				virtual_text = {
 					spacing = 4,
 					source = 'if_many',
 				},
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = ' ',
+						[vim.diagnostic.severity.WARN] = ' ',
+						[vim.diagnostic.severity.HINT] = '󰠠 ',
+						[vim.diagnostic.severity.INFO] = ' ',
+					},
+				},
+				update_in_insert = false,
 				severity_sort = true,
 			}
 		end,
